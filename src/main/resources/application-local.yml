@@ -1,0 +1,33 @@
+
+#项目目录
+project:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas"
+    #备份目录
+    backupDirectory: "/Users/hejiadong/src/java/maosong/datingpaas/backup"
+
+
+# dto
+dto:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
+
+#converter
+converter:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
+
+#vo
+vo:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
+
+#dao
+dao:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
+
+#service
+service:
+  root:
+    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
