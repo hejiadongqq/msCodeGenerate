@@ -3,8 +3,6 @@ package com.datingpass.utils.services;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * @author: Albert
  * @date: 2021-09-09 5:40 PM
@@ -21,14 +19,7 @@ public interface ControllerServices {
     void makeController(MakeBffRequest request) throws Exception;
 
     @Data
-    class MakeBffRequest {
-        /**
-         * entity的类名
-         */
-        @ApiModelProperty("entity名,类名 区分大小写")
-        @NotBlank(message = "name不能为空!")
-        private String name;
-
+    class MakeBffRequest extends BaseServices.EntityRequest {
         @ApiModelProperty("是否覆盖")
         private Boolean overlaid = false;
 

@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 public interface ProjectBffServices {
     /**
      * 创建bff项目
+     *
      * @param request
      * @throws Exception
      */
@@ -21,9 +22,9 @@ public interface ProjectBffServices {
     @Data
     class MakeBffRequest {
         /**
-         * entity的类名
+         * 项目名
          */
-        @ApiModelProperty("entity名,类名 区分大小写")
+        @ApiModelProperty("项目名 区分大小写")
         @NotBlank(message = "name不能为空!")
         private String name;
 

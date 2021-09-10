@@ -1,33 +1,47 @@
+#基本目录
+
+base: &basePath "/Users/hejiadong/src/java/maosong"
 
 #项目目录
 project:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas"
+    directory: *basePath "/datingpaas"
     #备份目录
-    backupDirectory: "/Users/hejiadong/src/java/maosong/datingpaas/backup"
+    backupDirectory: *basePath "/datingpaas/backup"
 
 
 # dto
 dto:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
+    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
 
 #converter
 converter:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
+    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
 
 #vo
 vo:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
+    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
 
 #dao
 dao:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
+    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
 
 #service
 service:
   root:
-    directory: "/Users/hejiadong/src/java/maosong/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
+    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
+
+#业务控制器
+controller:
+  root:
+    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/api"
+  dto:
+    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/dto"
+  vo:
+    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/vo"
+  converter:
+    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/converter"

@@ -16,7 +16,7 @@ import java.io.File;
  */
 @Component
 @Data
-public class EntityConfig {
+public class EntityConfig implements ModuleConfig {
 
     @Autowired
     private Config config;

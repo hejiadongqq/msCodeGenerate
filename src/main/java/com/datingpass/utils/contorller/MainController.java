@@ -1,5 +1,6 @@
 package com.datingpass.utils.contorller;
 
+import com.datingpass.utils.services.ControllerServices;
 import com.datingpass.utils.services.EntityServices;
 import com.datingpass.utils.utils.Utils;
 import com.service.commons.config.auth.UserToken;
@@ -22,6 +23,8 @@ import javax.validation.Valid;
 public class MainController extends BaseController {
     @Autowired
     private EntityServices entityServices;
+    @Autowired
+    private ControllerServices controllerServices;
 
     @ApiOperation(value = "生成entity")
     @PostMapping("/makeEntity")
@@ -35,6 +38,20 @@ public class MainController extends BaseController {
             return Response.failed(999, e.getMessage());
         }
     }
+
+    @ApiOperation(value = "生成Controller")
+    @PostMapping("/makeController")
+    public Response makeController(@RequestBody @Valid ControllerServices.MakeBffRequest dto) {
+        try {
+            controllerServices.makeController(dto);
+
+            return Response.SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.failed(999, e.getMessage());
+        }
+    }
+
 
     @ApiOperation(value = "更新entity")
     @PostMapping("/updateEntity")
