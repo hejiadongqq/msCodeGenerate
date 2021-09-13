@@ -31,5 +31,6 @@ public interface ${className} {
     Collection<${entityName}VO> entity2VO(Collection<${entityName}> entity);
 
     PageVO<${entityName}VO> page2PageVO(PageProxy<${entityName}> page);
+//---------------- 自动生成结束 -------------
 
 }

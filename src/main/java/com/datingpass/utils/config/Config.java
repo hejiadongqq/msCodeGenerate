@@ -20,6 +20,8 @@ public class Config {
      */
     private String resourceDirectoryPath;
 
+    private String version = "v1";
+
     /**
      * 模版目录名
      */

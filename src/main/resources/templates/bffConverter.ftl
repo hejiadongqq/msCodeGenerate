@@ -4,7 +4,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
 import com.datingpaas.model.dto.*;
-import com.datingpaas.model.entity.*;
 import com.datingpaas.model.vo.*;
 import com.service.commons.model.proxy.PageProxy;
 import com.service.commons.model.vo.PageVO;
@@ -18,18 +17,21 @@ import java.util.*;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ${className} {
 
-    ${entityName} dto2Entity(${entityName}PersistDTO dto);
 
-    Collection<${entityName}> dto2Entity(Collection<${entityName}PersistDTO> dto);
+    ${entityName}PersistDTO dto2dto(com.datingpaas.dto.${entityName}PersistDTO dto);
 
-    ${entityName} dto2Entity(${entityName}UpdateDTO dto);
+    Collection<${entityName}PersistDTO> dto2dto(Collection<com.datingpaas.dto.${entityName}PersistDTO> dto);
 
-    ${entityName} dto2Entity(${entityName}SearchDTO dto);
+    ${entityName}UpdateDTO dto2dto(com.datingpaas.dto.${entityName}UpdateDTO dto);
 
-    ${entityName}VO entity2VO(${entityName} entity);
+    ${entityName}SearchDTO dto2dto(com.datingpaas.dto.${entityName}SearchDTO dto);
 
-    Collection<${entityName}VO> entity2VO(Collection<${entityName}> entity);
+    com.datingpaas.vo.${entityName}VO vo2vo(${entityName}VO vo);
 
-    PageVO<${entityName}VO> page2PageVO(PageProxy<${entityName}> page);
+    Collection<com.datingpaas.vo.${entityName}VO> vo2vo(Collection<${entityName}VO> vo);
+
+    PageVO<com.datingpaas.vo.${entityName}VO> page2PageVO(PageProxy<${entityName}VO> page);
+
+//---------------- 自动生成结束 -------------
 
 }

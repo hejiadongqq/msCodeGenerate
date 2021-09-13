@@ -1,6 +1,7 @@
 package com.datingpass.utils.config;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +14,16 @@ import org.springframework.stereotype.Component;
 @Data
 public class ControllerConfig implements ModuleConfig {
 
+    @Autowired
+    private Config config;
+
     /**
      * controller模版文件
      */
     private String controllerTemplateFileName = "controller.ftl";
+
+    private String controllerUrl = "/"+config.getVersion();
+
     /**
      * converter模版文件
      */
@@ -25,6 +32,7 @@ public class ControllerConfig implements ModuleConfig {
      * vo模版文件
      */
     private String voTemplateFileName = "bffVo.ftl";
+
     /**
      * dao模版文件
      */

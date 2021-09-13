@@ -30,9 +30,9 @@ import javax.validation.constraints.*;
 */
 @Api(tags = "${entityName} API")
 @RestController
-@RequestMapping("/v1/account")
+@RequestMapping("${controllerUrl}")
 @Slf4j
-public class AccountController extends BaseController {
+public class ${entityName}Controller extends BaseController {
     @Autowired
     private ${entityName}Service service;
 
@@ -73,5 +73,7 @@ public class AccountController extends BaseController {
         ${entityName}VO save = service.update(request);
         return Response.success(save);
     }
+
+//---------------- 自动生成结束 -------------
 
 }

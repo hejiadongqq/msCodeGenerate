@@ -16,6 +16,7 @@ import java.util.Map;
 public class ControllerServicesImpl extends BaseServices implements ControllerServices {
 
 
+
     @Override
     public void makeController(MakeBffRequest request) throws Exception {
         // 检测类是否存在
@@ -28,21 +29,22 @@ public class ControllerServicesImpl extends BaseServices implements ControllerSe
         makeDTO(request, fields, DTOList, controllerConfig);
 
         // 生成vo相关的类
-        makeVO(request, fields, controllerConfig);
-
-        // 生成converter相关的类
-        makeConverter(request, controllerConfig);
+//        makeVO(request, fields, controllerConfig);
 //
-        // 生成vo相关的类
-        makeController(request);
+//        // 生成converter相关的类
+//        makeConverter(request, controllerConfig);
+////
+//        // 生成vo相关的类
+        privateMakeController(request);
 
     }
 
-    void makeController(EntityRequest request) throws Exception {
+    void privateMakeController(EntityRequest request) throws Exception {
         Map<String, Object> templateValue = makeTemplateValue(request);
         String className = request.getEntityName() + "Controller";
         templateValue.put("className", className);
         templateValue.put("packageName", controllerConfig.getControllerTemplatePackageName());
+        templateValue.put("controllerUrl", controllerConfig.getControllerUrl()+"/"+className.toLowerCase());
 
         // 生成文件
         String fileName = controllerConfig.getRootDirectoryPath() + "/" + className + ".java";

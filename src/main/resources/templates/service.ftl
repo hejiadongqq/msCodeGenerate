@@ -60,5 +60,7 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
         update(converter.dto2Entity(updateDTO));
         return getById(updateDTO.getId());
     }
+//---------------- 自动生成结束 -------------
+
 }
 

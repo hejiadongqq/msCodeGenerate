@@ -25,7 +25,7 @@ public class ${className} ${extends} {
     <#if field.isEnum>
     </#if>
     private ${field.type} ${field.name};
-
 </#list>
+//---------------- 自动生成结束 -------------
 
 }

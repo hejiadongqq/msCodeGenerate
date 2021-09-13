@@ -39,5 +39,8 @@ public class ${className} extends BaseDAO<${entityName}, ${dtoName}> {
             return query.where(pre).orderBy(criteriaBuilder.desc(root.get("createTime"))).getRestriction();
         };
     }
+
+//---------------- 自动生成结束 -------------
+
 }
 

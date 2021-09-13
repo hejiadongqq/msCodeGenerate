@@ -28,4 +28,6 @@ public class ${className} ${extends} {
 
 </#list>
 
+//---------------- 自动生成结束 -------------
+
 }

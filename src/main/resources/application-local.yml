@@ -1,47 +1,47 @@
 #基本目录
 
-base: &basePath "/Users/hejiadong/src/java/maosong"
+base: "/Users/hejiadong/src/java/maosong"
 
 #项目目录
 project:
   root:
-    directory: *basePath "/datingpaas"
+    directory: "${base}/datingpaas"
     #备份目录
-    backupDirectory: *basePath "/datingpaas/backup"
+    backupDirectory: "${base}/datingpaas/backup"
 
 
 # dto
 dto:
   root:
-    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
+    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
 
 #converter
 converter:
   root:
-    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
+    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
 
 #vo
 vo:
   root:
-    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
+    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
 
 #dao
 dao:
   root:
-    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
+    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
 
 #service
 service:
   root:
-    directory: *basePath "/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
+    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
 
 #业务控制器
 controller:
   root:
-    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/api"
+    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/api"
   dto:
-    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/dto"
+    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/dto"
   vo:
-    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/vo"
+    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/vo"
   converter:
-    directory: *basePath "/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/converter"
+    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/converter"
