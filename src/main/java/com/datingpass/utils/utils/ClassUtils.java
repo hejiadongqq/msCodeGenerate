@@ -2,16 +2,10 @@ package com.datingpass.utils.utils;
 
 import com.datingpass.utils.vo.Field;
 import com.google.common.collect.Lists;
-import com.service.commons.tools.utils.GsonUtils;
-import com.sun.tools.javac.resources.javac;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
-import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -84,8 +78,9 @@ public class ClassUtils {
 
     /**
      * 编译并运行
-     * @param packageClassName      包和类名
-     * @param javaFilePath          java源码路径
+     *
+     * @param packageClassName 包和类名
+     * @param javaFilePath     java源码路径
      * @throws Exception
      */
     public static void complierAndRun(String packageClassName, String javaFilePath) throws Exception {
@@ -106,13 +101,13 @@ public class ClassUtils {
         // file path the file you want to compile
         String filePath = javaFilePath;
 
-        String[] args = new String[] {
+        String[] args = new String[]{
                 "-classpath", classpath,
                 "-sourcepath", sourcepath,
                 "-d", putputpath,
                 filePath
         };
-        int status = com.sun.tools.javac.Main.compile(args);
+//        int status = com.sun.tools.javac.Main.compile(args);
 
 
 //        JavaCompiler javac = ToolProvider.getSystemJavaCompiler();
@@ -124,10 +119,10 @@ public class ClassUtils {
 ////                "-classpath", System.getProperty("java.class.path").replaceAll(":",";")
 ////                , "-d",System.getProperty("user.dir") + "/datingpaas-service/target/classes"
 ////                , javaFilePath);
-        if (status != 0) {
-            log.error("没有编译成功！");
-            throw new RuntimeException("类编译不成功!");
-        }
+//        if (status != 0) {
+//            log.error("没有编译成功！");
+//            throw new RuntimeException("类编译不成功!");
+//        }
 
         //动态测试执行
         Class clz = Class.forName(packageClassName);

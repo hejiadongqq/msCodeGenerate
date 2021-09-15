@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @author: Albert
  * @date: 2021-09-09 5:43 PM
@@ -14,6 +16,11 @@ import org.springframework.stereotype.Component;
 @Data
 public class ControllerConfig implements ModuleConfig {
 
+    @PostConstruct
+    private void init() {
+        controllerUrl = "/" + config.getVersion();
+    }
+
     @Autowired
     private Config config;
 
@@ -22,7 +29,7 @@ public class ControllerConfig implements ModuleConfig {
      */
     private String controllerTemplateFileName = "controller.ftl";
 
-    private String controllerUrl = "/"+config.getVersion();
+    private String controllerUrl;
 
     /**
      * converter模版文件

@@ -5,16 +5,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.service.commons.config.auth.UserToken;
 import com.service.commons.config.auth.UserTokenUtils;
 import com.service.commons.tools.utils.GsonUtils;
-import com.sun.tools.internal.ws.processor.util.DirectoryUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.util.FileSystemUtils;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
@@ -31,7 +28,6 @@ public class Utils {
     private static final Long EXPIRE_TIME = tokenExpire * 1000L;
     private static final Algorithm ALGORITHM = Algorithm.HMAC256("78cIYsXMF9TLDCPy");
     private static PasswordEncoder _passwordEncoder;
-
 
 
     public static String makeToken(Long userId) {
@@ -53,7 +49,7 @@ public class Utils {
     }
 
     public static PasswordEncoder get_passwordEncoder() {
-        if (_passwordEncoder==null) {
+        if (_passwordEncoder == null) {
             _passwordEncoder = new BCryptPasswordEncoder(4);
         }
         return _passwordEncoder;
@@ -66,8 +62,9 @@ public class Utils {
 
     /**
      * 备份文件
-     * @param fileName  原地址
-     * @param bakName   备份文件名
+     *
+     * @param fileName 原地址
+     * @param bakName  备份文件名
      * @return
      * @throws Exception
      */
@@ -85,6 +82,7 @@ public class Utils {
 
     /**
      * 备份并且创建目录
+     *
      * @param fileName
      * @param bakName
      * @return
