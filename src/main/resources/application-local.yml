@@ -39,9 +39,12 @@ service:
 controller:
   root:
     directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/api"
+
   dto:
     directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/dto"
+
   vo:
     directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/vo"
+
   converter:
     directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/converter"

@@ -20,6 +20,10 @@ public interface ${className} {
 
     ${entityName} dto2Entity(${entityName}PersistDTO dto);
 
+    ${entityName}SearchDTO dto2dto(${entityName}PersistDTO dto);
+
+    ${entityName}PersistDTO dto2dto(${entityName}SearchDTO dto);
+
     Collection<${entityName}> dto2Entity(Collection<${entityName}PersistDTO> dto);
 
     ${entityName} dto2Entity(${entityName}UpdateDTO dto);

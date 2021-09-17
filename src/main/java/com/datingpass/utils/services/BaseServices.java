@@ -1,5 +1,6 @@
 package com.datingpass.utils.services;
 
+import com.datingpaas.common.annotation.SwaggerIgnoreProperty;
 import com.datingpass.utils.config.Config;
 import com.datingpass.utils.config.ControllerConfig;
 import com.datingpass.utils.config.EntityConfig;
@@ -55,6 +56,10 @@ public abstract class BaseServices {
         @NotBlank(message = "entityName不能为空!")
         private String entityName;
 
+        @ApiModelProperty(value = "类名的开头部分，默认为空", hidden = true)
+        @SwaggerIgnoreProperty
+        private String classNameBefore = "";
+
     }
 
     final static List<String> StringFiledList =
@@ -95,6 +100,8 @@ public abstract class BaseServices {
         Map<String, Object> templateValue = Maps.newHashMap();
         templateValue.put("dateTime", LocalDateTime.now());
         templateValue.put("entityName", request.getEntityName());
+        // 类名前缀
+        templateValue.put("before", request.getClassNameBefore());
         return templateValue;
     }
 
@@ -141,7 +148,7 @@ public abstract class BaseServices {
             Map<String, Object> templateValue = makeDTOTemplateValue(
                     request, templateName, moduleConfig.getDtoTemplatePackageName());
             templateValue.put("fields", fields);
-            String className = request.getEntityName() + templateName + "DTO";
+            String className = request.getClassNameBefore() + request.getEntityName() + templateName + "DTO";
             templateValue.put("className", className);
 
             if (templateName.equals("Search")) {
@@ -184,7 +191,7 @@ public abstract class BaseServices {
      */
     void makeVO(EntityRequest request, Collection<Field> fields, ModuleConfig moduleConfig) throws Exception {
         Map<String, Object> templateValue = makeTemplateValue(request);
-        String className = request.getEntityName() + "VO";
+        String className = request.getClassNameBefore() + request.getEntityName() + "VO";
         templateValue.put("packageName", moduleConfig.getVoTemplatePackageName());
         templateValue.put("className", className);
         templateValue.put("fields", fields);
@@ -204,7 +211,7 @@ public abstract class BaseServices {
      */
     void makeConverter(EntityRequest request, ModuleConfig moduleConfig) throws Exception {
         Map<String, Object> templateValue = makeTemplateValue(request);
-        String className = request.getEntityName() + "Converter";
+        String className = request.getClassNameBefore() + request.getEntityName() + "Converter";
         templateValue.put("className", className);
         templateValue.put("packageName", moduleConfig.getConverterTemplatePackageName());
 

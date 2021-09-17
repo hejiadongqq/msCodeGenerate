@@ -15,9 +15,6 @@ import lombok.NoArgsConstructor;
 */
 @ApiModel
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class ${className} ${extends} {
 
 <#list fields as field>

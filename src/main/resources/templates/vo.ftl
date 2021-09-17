@@ -16,9 +16,6 @@ import com.service.commons.model.vo.BaseVO;
 */
 @ApiModel
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class ${className} ${extends} {
 
 <#list fields as field>

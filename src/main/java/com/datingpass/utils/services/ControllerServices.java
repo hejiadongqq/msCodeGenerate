@@ -23,5 +23,8 @@ public interface ControllerServices {
         @ApiModelProperty("是否覆盖")
         private Boolean overlaid = false;
 
+        @ApiModelProperty("类名前缀")
+        private String classNameBefore = "Bff";
+
     }
 }

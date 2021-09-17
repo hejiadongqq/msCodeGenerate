@@ -36,7 +36,11 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
 
     @Transactional(rollbackFor = Exception.class)
     public ${entityName}VO save(${entityName}PersistDTO dto) {
-        ${entityName} entity = save(converter.dto2Entity(dto));
+        ${entityName} entity = get(converter.dto2dto(dto));
+        if (Objects.nonNull(entity)) {
+            return getById(entity.getId());
+        }
+        entity = save(converter.dto2Entity(dto));
         return getById(entity.getId());
     }
 
@@ -59,6 +63,14 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
     public ${entityName}VO update(${entityName}UpdateDTO updateDTO) {
         update(converter.dto2Entity(updateDTO));
         return getById(updateDTO.getId());
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(${entityName}SearchDTO searchDTO) {
+        ${entityName} entity = get(searchDTO);
+        if (Objects.nonNull(entity)) {
+            delete(entity.getId());
+        }
     }
 //---------------- 自动生成结束 -------------
 

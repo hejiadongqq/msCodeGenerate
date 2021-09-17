@@ -15,14 +15,14 @@ import lombok.NoArgsConstructor;
 */
 @ApiModel
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class ${className} ${extends} {
 
 <#list fields as field>
-    @ApiModelProperty(value = "${field.desc}")
-    <#if field.isEnum>
+    <#if field.name = "groupId" || field.name = "appId" || field.name = "deleted">
+        @ApiModelProperty(value = "${field.desc}", hidden = true)
+        @SwaggerIgnoreProperty
+    <#else>
+        @ApiModelProperty(value = "${field.desc}")
     </#if>
     private ${field.type} ${field.name};
 

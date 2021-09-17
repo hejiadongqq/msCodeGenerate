@@ -29,10 +29,10 @@ public class ControllerServicesImpl extends BaseServices implements ControllerSe
         makeDTO(request, fields, DTOList, controllerConfig);
 
         // 生成vo相关的类
-//        makeVO(request, fields, controllerConfig);
+        makeVO(request, fields, controllerConfig);
 //
 //        // 生成converter相关的类
-//        makeConverter(request, controllerConfig);
+        makeConverter(request, controllerConfig);
 ////
 //        // 生成vo相关的类
         privateMakeController(request);
@@ -44,7 +44,7 @@ public class ControllerServicesImpl extends BaseServices implements ControllerSe
         String className = request.getEntityName() + "Controller";
         templateValue.put("className", className);
         templateValue.put("packageName", controllerConfig.getControllerTemplatePackageName());
-        templateValue.put("controllerUrl", controllerConfig.getControllerUrl()+"/"+className.toLowerCase());
+        templateValue.put("controllerUrl", controllerConfig.getControllerUrl()+"/"+request.getEntityName().toLowerCase());
 
         // 生成文件
         String fileName = controllerConfig.getRootDirectoryPath() + "/" + className + ".java";
