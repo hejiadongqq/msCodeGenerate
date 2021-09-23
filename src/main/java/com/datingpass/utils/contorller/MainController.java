@@ -2,6 +2,7 @@ package com.datingpass.utils.contorller;
 
 import com.datingpass.utils.services.ControllerServices;
 import com.datingpass.utils.services.EntityServices;
+import com.datingpass.utils.services.ProjectBffServices;
 import com.datingpass.utils.utils.Utils;
 import com.service.commons.config.auth.UserToken;
 import com.service.commons.model.resp.Response;
@@ -25,6 +26,8 @@ public class MainController extends BaseController {
     private EntityServices entityServices;
     @Autowired
     private ControllerServices controllerServices;
+    @Autowired
+    private ProjectBffServices projectBffServices;
 
     @ApiOperation(value = "生成entity")
     @PostMapping("/makeEntity")
@@ -44,6 +47,19 @@ public class MainController extends BaseController {
     public Response makeController(@RequestBody @Valid ControllerServices.MakeBffRequest dto) {
         try {
             controllerServices.makeController(dto);
+
+            return Response.SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.failed(999, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "生成Strategy")
+    @PostMapping("/makeStrategy")
+    public Response makeStrategy(@RequestBody @Valid ProjectBffServices.MakeBffRequest dto) {
+        try {
+            projectBffServices.makeStrategy(dto);
 
             return Response.SUCCESS;
         } catch (Exception e) {

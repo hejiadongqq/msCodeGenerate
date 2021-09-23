@@ -1,10 +1,7 @@
 package com.datingpass.utils.services;
 
 import com.datingpaas.common.annotation.SwaggerIgnoreProperty;
-import com.datingpass.utils.config.Config;
-import com.datingpass.utils.config.ControllerConfig;
-import com.datingpass.utils.config.EntityConfig;
-import com.datingpass.utils.config.ModuleConfig;
+import com.datingpass.utils.config.*;
 import com.datingpass.utils.utils.ClassUtils;
 import com.datingpass.utils.utils.Utils;
 import com.datingpass.utils.vo.Field;
@@ -14,6 +11,7 @@ import com.service.commons.model.enums.Deleted;
 import freemarker.template.TemplateException;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotBlank;
@@ -228,6 +226,28 @@ public abstract class BaseServices {
             throw new RuntimeException(request.getEntityName() + " 类不存在！");
         }
         return entity;
+    }
+
+    void makeStrategy(ProjectBffServices.MakeBffRequest request, BffConfig moduleConfig) throws Exception {
+        String projectName = StringUtils.capitalize(request.getName());
+        Map<String, Object> templateValue = Maps.newHashMap();
+        templateValue.put("dateTime", LocalDateTime.now());
+        templateValue.put("projectName", projectName);
+        // 组件名
+        templateValue.put("componentName", StringUtils.uncapitalize(projectName));
+
+        // 类名前缀
+        templateValue.put("before", "");
+
+        String className = projectName + "Strategy";
+        templateValue.put("className", className);
+        templateValue.put("packageName", moduleConfig.getStrategyTemplatePackageName());
+
+        // 生成文件
+        String fileName = moduleConfig.getStrategyDirectoryPath() + "/" + className + ".java";
+
+        File file = backupFile(fileName);
+        templateServices.makeFile(moduleConfig.getStrategyTemplateFileName(), templateValue, file);
     }
 
 }

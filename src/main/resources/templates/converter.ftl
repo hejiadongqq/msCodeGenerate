@@ -11,10 +11,11 @@ import com.service.commons.model.vo.PageVO;
 import java.util.*;
 
 /**
-* ${entityName}转换器
-* @author Automatically created By Albert utils
-* @date ${dateTime}
-*/
+ * ${entityName}转换器
+ *
+ * @author Automatically created By Albert utils
+ * @date ${dateTime}
+ */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ${className} {
 

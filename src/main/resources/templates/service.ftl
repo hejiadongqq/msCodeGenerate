@@ -22,10 +22,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
-* ${entityName}Service类
-* @author Automatically created By Albert utils
-* @date ${dateTime}
-*/
+ * ${entityName}Service类
+ *
+ * @author Automatically created By Albert utils
+ * @date ${dateTime}
+ */
 @Service
 public class ${className} extends BaseService<${entityName}, ${dtoName}> {
     @Autowired

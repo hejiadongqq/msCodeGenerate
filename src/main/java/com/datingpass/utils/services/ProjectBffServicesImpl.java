@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  */
 @Service
 @Slf4j
-public class ProjectBffServicesImpl implements ProjectBffServices {
+public class ProjectBffServicesImpl extends BaseServices implements ProjectBffServices {
     @Autowired
     private Config config;
     @Autowired
@@ -44,4 +44,8 @@ public class ProjectBffServicesImpl implements ProjectBffServices {
         String pomPath = projectPath + "pom.xml";
     }
 
+    @Override
+    public void makeStrategy(MakeBffRequest request) throws Exception {
+        super.makeStrategy(request, bffConfig);
+    }
 }

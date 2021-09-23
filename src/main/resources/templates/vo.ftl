@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 import com.service.commons.model.vo.BaseVO;
 
 /**
-* ${entityName}VO类
-* @author Automatically created By Albert utils
-* @date ${dateTime}
-*/
+ * ${entityName}VO类
+ *
+ * @author Automatically created By Albert utils
+ * @date ${dateTime}
+ */
 @ApiModel
 @Data
 public class ${className} ${extends} {

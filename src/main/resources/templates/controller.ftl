@@ -28,10 +28,11 @@ import javax.validation.constraints.*;
 
 
 /**
-* ${entityName}控制器
-* @author Automatically created By Albert utils
-* @date ${dateTime}
-*/
+ * ${entityName}控制器
+ *
+ * @author Automatically created By Albert utils
+ * @date ${dateTime}
+ */
 @Api(tags = "${entityName} API")
 @RestController
 @RequestMapping("${controllerUrl}")

@@ -12,10 +12,11 @@ import com.google.common.collect.Lists;
 import javax.persistence.criteria.Predicate;
 
 /**
-* ${entityName}DAO类
-* @author Automatically created By Albert utils
-* @date ${dateTime}
-*/
+ * ${entityName}DAO类
+ *
+ * @author Automatically created By Albert utils
+ * @date ${dateTime}
+ */
 @Repository
 public class ${className} extends BaseDAO<${entityName}, ${dtoName}> {
 

@@ -8,43 +8,54 @@ project:
     directory: "${base}/datingpaas"
     #备份目录
     backupDirectory: "${base}/datingpaas/backup"
+    service: "${base}/datingpaas/datingpaas-service"
 
 
 # dto
 dto:
   root:
-    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/dto"
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/dto"
 
 #converter
 converter:
   root:
-    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/converter/mapstruct"
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/converter/mapstruct"
 
 #vo
 vo:
   root:
-    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/model/vo"
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/vo"
 
 #dao
 dao:
   root:
-    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/dao"
+    directory: "${project.root.service}/src/main/java/com/datingpaas/dao"
 
 #service
 service:
   root:
-    directory: "${base}/datingpaas/datingpaas-service/src/main/java/com/datingpaas/service"
+    directory: "${project.root.service}/src/main/java/com/datingpaas/service"
+
+#bff工程名
+bff:
+  root: "${base}/datingpaas/datingpaas-gfun-bff"
 
 #业务控制器
 controller:
   root:
-    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/api"
+    directory: "${bff.root}/src/main/java/com/datingpaas/api"
 
   dto:
-    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/dto"
+    directory: "${bff.root}/src/main/java/com/datingpaas/dto"
 
   vo:
-    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/vo"
+    directory: "${bff.root}/src/main/java/com/datingpaas/vo"
 
   converter:
-    directory: "${base}/datingpaas/datingpaas-gfun-bff/src/main/java/com/datingpaas/converter"
+    directory: "${bff.root}/src/main/java/com/datingpaas/converter"
+
+
+# 验单
+strategy:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/common/strategy/impl"

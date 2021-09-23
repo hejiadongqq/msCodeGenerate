@@ -19,6 +19,13 @@ public interface ProjectBffServices {
      */
     void makeBff(MakeBffRequest request) throws Exception;
 
+    /**
+     * 创建项目的Strategy
+     * @param request
+     * @throws Exception
+     */
+    void makeStrategy(MakeBffRequest request) throws Exception;
+
     @Data
     class MakeBffRequest {
         /**
