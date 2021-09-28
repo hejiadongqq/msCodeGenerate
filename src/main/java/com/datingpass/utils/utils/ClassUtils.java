@@ -67,10 +67,20 @@ public class ClassUtils {
 
             boolean isEnum = field.getType().isEnum();
 
+            boolean isDateTime = false, isDate = false;
+            if (field.getType().getName().startsWith("java.time.LocalDateTime")) {
+                isDateTime = true;
+            }
+            if (field.getType().getName().startsWith("java.time.LocalDate")) {
+                isDate = true;
+            }
+
             return Field.builder()
                     .name(field.getName())
                     .type(field.getType().getName())
                     .desc(comment)
+                    .isDateTime(isDateTime)
+                    .isDate(isDate)
                     .isEnum(isEnum)
                     .build();
         }).collect(Collectors.toList());

@@ -34,5 +34,15 @@ public class Field {
      */
     private Boolean isEnum;
 
+    /**
+     * 是否日期时间型
+     */
+    private Boolean isDateTime;
+
+    /**
+     * 是否日期
+     */
+    private Boolean isDate;
+
 
 }

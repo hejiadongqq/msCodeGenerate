@@ -19,13 +19,8 @@ import com.service.commons.model.vo.BaseVO;
 @Data
 public class ${className} ${extends} {
 
-<#list fields as field>
-    @ApiModelProperty(value = "${field.desc}")
-    <#if field.isEnum>
-    </#if>
-    private ${field.type} ${field.name};
+<#include "module/fields.ftl">
 
-</#list>
 //---------------- 自动生成结束 -------------
 
 }

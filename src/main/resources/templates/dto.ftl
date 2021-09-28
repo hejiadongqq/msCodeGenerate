@@ -18,16 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ${className} ${extends} {
 
-<#list fields as field>
-    <#if field.name = "groupId" || field.name = "appId" || field.name = "deleted">
-        @ApiModelProperty(value = "${field.desc}", hidden = true)
-        @SwaggerIgnoreProperty
-    <#else>
-        @ApiModelProperty(value = "${field.desc}")
-    </#if>
-    private ${field.type} ${field.name};
-
-</#list>
+<#include "module/fields.ftl">
 
 //---------------- 自动生成结束 -------------
 
