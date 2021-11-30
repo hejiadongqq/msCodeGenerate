@@ -31,13 +31,12 @@ public class Utils {
 
 
     public static String makeToken(Long userId) {
+
         UserToken token = new UserToken();
+
         token.setId(Long.valueOf(userId));
 
-        Date expiresAt = new Date(System.currentTimeMillis() + EXPIRE_TIME);
-        return JWT.create().withIssuer("datingpaas").withExpiresAt(expiresAt)
-                .withClaim("id", token.getId())
-                .withClaim("timestamp", token.getTimestamp()).sign(ALGORITHM);
+        return UserTokenUtils.create(token);
     }
 
     public static UserToken getUserToken(String token) {
