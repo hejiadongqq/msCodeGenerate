@@ -14,11 +14,15 @@ import org.springframework.stereotype.Component;
 public class BffConfig {
     private String strategyTemplateFileName = "strategy.ftl";
 
-    private String strategyTemplatePackageName = "com.datingpaas.common.strategy.impl";
+    /**
+     * 包名
+     */
+    @Value("${strategy.root.package_name:}")
+    private String strategyTemplatePackageName;
 
     /**
      * 验单目录路径
      */
-    @Value("${strategy.root.directory}")
+    @Value("${strategy.root.directory:}")
     private String strategyDirectoryPath;
 }

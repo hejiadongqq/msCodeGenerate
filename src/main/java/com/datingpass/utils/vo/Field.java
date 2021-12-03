@@ -32,17 +32,20 @@ public class Field {
     /**
      * 是否枚举
      */
-    private Boolean isEnum;
+    @Builder.Default()
+    private Boolean isEnum = false;
 
     /**
      * 是否日期时间型
      */
-    private Boolean isDateTime;
+    @Builder.Default()
+    private Boolean isDateTime = false;
 
     /**
      * 是否日期
      */
-    private Boolean isDate;
+    @Builder.Default()
+    private Boolean isDate = false;
 
 
 }

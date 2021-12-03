@@ -1,6 +1,7 @@
 package com.datingpass.utils.config;
 
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,11 @@ public class ControllerConfig implements ModuleConfig {
 
     @PostConstruct
     private void init() {
-        controllerUrl = "/" + config.getVersion();
+        if (StringUtils.isNotBlank(config.getVersion())) {
+            controllerUrl = "/" + config.getVersion();
+        } else {
+            controllerUrl = "";
+        }
     }
 
     @Autowired
@@ -48,19 +53,24 @@ public class ControllerConfig implements ModuleConfig {
     /**
      * dto包名
      */
-    private String dtoTemplatePackageName = "com.datingpaas.dto";
+    @Value("${controller.dto.package_name}")
+    private String dtoTemplatePackageName;
     /**
      * 控制器包名
      */
-    private String controllerTemplatePackageName = "com.datingpaas.api";
+    @Value("${controller.root.package_name}")
+    private String controllerTemplatePackageName;
     /**
      * vo包名
      */
-    private String voTemplatePackageName = "com.datingpaas.vo";
+    @Value("${controller.vo.package_name}")
+    private String voTemplatePackageName;
+
     /**
      * converter包名
      */
-    private String converterTemplatePackageName = "com.datingpaas.converter";
+    @Value("${controller.converter.package_name}")
+    private String converterTemplatePackageName;
 
     /**
      * 控制器目录路径

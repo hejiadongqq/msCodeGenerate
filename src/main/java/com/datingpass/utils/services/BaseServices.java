@@ -7,16 +7,19 @@ import com.datingpass.utils.utils.Utils;
 import com.datingpass.utils.vo.Field;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.oracle.tools.packager.Log;
 import com.service.commons.model.enums.Deleted;
 import freemarker.template.TemplateException;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -28,6 +31,7 @@ import java.util.Objects;
  * @date: 2021-09-10 3:51 PM
  * @desc:
  */
+@Slf4j
 public abstract class BaseServices {
 
     @Autowired
@@ -100,6 +104,7 @@ public abstract class BaseServices {
         templateValue.put("entityName", request.getEntityName());
         // 类名前缀
         templateValue.put("before", request.getClassNameBefore());
+        templateValue.put("_config", config);
         return templateValue;
     }
 
@@ -153,18 +158,24 @@ public abstract class BaseServices {
                 // 手动增加groupId和appId
                 fields.add(Field.builder()
                         .isEnum(false)
+                        .isDate(false)
+                        .isDateTime(false)
                         .desc("appId")
                         .type("String")
                         .name("appId")
                         .build());
                 fields.add(Field.builder()
                         .isEnum(false)
+                        .isDate(false)
+                        .isDateTime(false)
                         .desc("groupId")
                         .type("String")
                         .name("groupId")
                         .build());
                 fields.add(Field.builder()
                         .isEnum(true)
+                        .isDate(false)
+                        .isDateTime(false)
                         .desc("删除标记YES，NO")
                         .type(Deleted.class.getName())
                         .name("deleted")
@@ -220,16 +231,26 @@ public abstract class BaseServices {
         templateServices.makeFile(moduleConfig.getConverterTemplateFileName(), templateValue, file);
     }
 
-    Class checkClass(EntityRequest request) {
+    Class checkClass(EntityRequest request) throws Exception {
+        String err = "";
         Class entity = ClassUtils.getClass(entityConfig.getEntityPackage(), request.getEntityName());
         if (Objects.isNull(entity)) {
-            throw new RuntimeException(request.getEntityName() + " 类不存在！");
+            log.info("类不存在！开始动态加载...");
+            String classPath = entityConfig.getEntityDirectoryPath() + "/" + request.getEntityName()+".java";
+            Class aClass = ClassUtils.loadClass(classPath, entityConfig.getEntityPackage(), request.getEntityName());
+            if (Objects.isNull(aClass)) {
+                throw new RuntimeException(request.getEntityName() + " 类不存在！");
+            }
+            return aClass;
         }
         return entity;
     }
 
+
+
     void makeStrategy(ProjectBffServices.MakeBffRequest request, BffConfig moduleConfig) throws Exception {
-        if (StringUtils.isBlank(moduleConfig.getStrategyDirectoryPath())) {
+        if (StringUtils.isAnyBlank(moduleConfig.getStrategyDirectoryPath(),
+                moduleConfig.getStrategyTemplatePackageName())) {
             throw new RuntimeException("验单工程路径没有配置！");
         }
         String projectName = StringUtils.capitalize(request.getName());

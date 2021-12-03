@@ -16,49 +16,64 @@ project:
 dto:
   root:
     directory: "${project.root.service}/src/main/java/com/mason/dto"
+    package_name: "com.mason.dto"
 
 #converter
 converter:
   root:
     directory: "${project.root.service}/src/main/java/com/mason/converter"
+    package_name: "com.mason.converter"
 
 #vo
 vo:
   root:
     directory: "${project.root.service}/src/main/java/com/mason/vo"
+    package_name: "com.mason.vo"
 
 #dao
 dao:
   root:
     directory: "${project.root.service}/src/main/java/com/mason/dao"
+    package_name: "com.mason.dao"
 
 #service
 service:
   root:
     directory: "${project.root.service}/src/main/java/com/mason/services"
+    package_name: "com.mason.services"
+
+#entity
+entity:
+  root:
+    directory: "${project.root.service}/src/main/java/com/mason/dao/entity"
+    package_name: "com.mason.dao.entity"
 
 #bff工程名
 bff:
-  # /Users/hejiadong/src/java/maosong/lovit/app_server
   root: "${project.root.directory}/app_server"
 
 #业务控制器
 controller:
   root:
-    # /Users/hejiadong/src/java/maosong/lovit/app_server/src/main/java/com/mason/lovit/api
     directory: "${bff.root}/src/main/java/com/mason/lovit/api"
+    package_name: "com.mason.lovit.api"
+  version: " "
 
   dto:
     directory: "${bff.root}/src/main/java/com/mason/lovit/dto"
+    package_name: "com.mason.lovit.dto"
 
   vo:
     directory: "${bff.root}/src/main/java/com/mason/lovit/vo"
+    package_name: "com.mason.lovit.vo"
 
   converter:
     directory: "${bff.root}/src/main/java/com/mason/lovit/converter"
+    package_name: "com.mason.lovit.converter"
 
 
-# 验单 strategy.root.directory
+# 验单
 strategy:
   root:
-    directory: "${project.root.service}/src/main/java/com/datingpaas/common/strategy/impl"
+    directory: ""
+    package_name: ""

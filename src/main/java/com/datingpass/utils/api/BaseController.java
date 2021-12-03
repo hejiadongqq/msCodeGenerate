@@ -1,4 +1,4 @@
-package com.datingpass.utils.contorller;
+package com.datingpass.utils.api;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.google.common.collect.Maps;

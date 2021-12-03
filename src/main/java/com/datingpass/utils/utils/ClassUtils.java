@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -25,6 +28,25 @@ public class ClassUtils {
             return Class.forName(classPath);
 
         } catch (ClassNotFoundException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 装载指定的类
+     * @param filePath              类路径
+     * @param packageName           类包名
+     * @param className             类名
+     * @return
+     */
+    public static Class loadClass(String filePath, String packageName, String className) {
+        String classPath = packageName + "." + className;
+        try {
+            File file = new File(filePath);
+            URL url = file.toURI().toURL();
+            URLClassLoader classLoader = new URLClassLoader(new URL[]{url});
+            return classLoader.loadClass(classPath);
+        } catch (Exception e) {
             return null;
         }
     }

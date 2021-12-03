@@ -1,0 +1,78 @@
+#基本目录
+
+base: "/Users/hejiadong/src/java/maosong"
+
+#项目目录
+project:
+  root:
+    # 项目根目录
+    directory: "${base}/datingpaas"
+    #备份目录
+    backupDirectory: "${base}/datingpaas/backup"
+    # 中间层，service
+    service: "${base}/datingpaas/datingpaas-service"
+
+# dto
+dto:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/dto"
+    package_name: "com.datingpaas.model.dto"
+
+#converter
+converter:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/converter/mapstruct"
+    package_name: "com.datingpaas.model.converter.mapstruct"
+
+#vo
+vo:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/model/vo"
+    package_name: "com.datingpaas.model.vo"
+
+#dao
+dao:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/dao"
+    package_name: "com.datingpaas.dao"
+
+#service
+service:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/service"
+    package_name: "com.datingpaas.service"
+
+#entity
+entity:
+  root:
+    package_name: "com.datingpaas.model.entity"
+
+#bff工程名
+bff:
+  root: "${base}/datingpaas/datingpaas-gfun-bff"
+
+#业务控制器
+controller:
+  root:
+    directory: "${bff.root}/src/main/java/com/datingpaas/api"
+    package_name: "com.datingpaas.api"
+  version: "v1"
+
+  dto:
+    directory: "${bff.root}/src/main/java/com/datingpaas/dto"
+    package_name: "com.datingpaas.dto"
+
+  vo:
+    directory: "${bff.root}/src/main/java/com/datingpaas/vo"
+    package_name: "com.datingpaas.vo"
+
+  converter:
+    directory: "${bff.root}/src/main/java/com/datingpaas/converter"
+    package_name: "com.datingpaas.converter"
+
+
+# 验单
+strategy:
+  root:
+    directory: "${project.root.service}/src/main/java/com/datingpaas/common/strategy/impl"
+    package_name: "com.datingpaas.common.strategy.impl"

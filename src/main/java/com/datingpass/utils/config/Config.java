@@ -20,7 +20,9 @@ public class Config {
      */
     private String resourceDirectoryPath;
 
-    private String version = "v1";
+    // 控制器版本号
+    @Value("${controller.version}")
+    private String version;
 
     /**
      * 模版目录名

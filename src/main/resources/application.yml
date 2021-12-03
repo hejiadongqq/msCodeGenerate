@@ -17,6 +17,10 @@ server:
 spring:
   profiles:
     active: local
+    #多个配置文件以逗号分隔
+    include: loveit
+
+
   application:
     name: utils
   servlet:
@@ -55,4 +59,4 @@ spring:
       template_update_delay: 0
       default_encoding: "UTF-8"
       classic_compatible: true
-
+debug: false

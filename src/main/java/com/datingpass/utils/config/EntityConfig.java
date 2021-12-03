@@ -49,32 +49,44 @@ public class EntityConfig implements ModuleConfig {
     @Value("${service.root.directory}")
     private String serviceDirectoryPath;
 
+    /**
+     * entity的目录路径
+     */
+    @Value("${entity.root.directory}")
+    private String entityDirectoryPath;
+
 
     //--------------- 生成文件 包名 ------------------//
     /**
      * entity包名
      */
-    private String entityPackage = "com.datingpaas.model.entity";
+    @Value("${entity.root.package_name}")
+    private String entityPackage;
     /**
      * dto包名
      */
-    private String dtoTemplatePackageName = "com.datingpaas.model.dto";
+    @Value("${dto.root.package_name}")
+    private String dtoTemplatePackageName;
     /**
      * vo包名
      */
-    private String voTemplatePackageName = "com.datingpaas.model.vo";
+    @Value("${vo.root.package_name}")
+    private String voTemplatePackageName;
     /**
      * converter包名
      */
-    private String converterTemplatePackageName = "com.datingpaas.model.converter.mapstruct";
+    @Value("${converter.root.package_name}")
+    private String converterTemplatePackageName;
     /**
      * dao包名
      */
-    private String daoTemplatePackageName = "com.datingpaas.dao";
+    @Value("${dao.root.package_name}")
+    private String daoTemplatePackageName;
     /**
      * service包名
      */
-    private String serviceTemplatePackageName = "com.datingpaas.service";
+    @Value("${service.root.package_name}")
+    private String serviceTemplatePackageName;
 
 
     //--------------- 模版文件名 ------------------//
