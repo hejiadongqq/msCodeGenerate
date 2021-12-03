@@ -229,6 +229,9 @@ public abstract class BaseServices {
     }
 
     void makeStrategy(ProjectBffServices.MakeBffRequest request, BffConfig moduleConfig) throws Exception {
+        if (StringUtils.isBlank(moduleConfig.getStrategyDirectoryPath())) {
+            throw new RuntimeException("验单工程路径没有配置！");
+        }
         String projectName = StringUtils.capitalize(request.getName());
         Map<String, Object> templateValue = Maps.newHashMap();
         templateValue.put("dateTime", LocalDateTime.now());

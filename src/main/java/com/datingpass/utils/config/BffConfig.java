@@ -17,7 +17,7 @@ public class BffConfig {
     private String strategyTemplatePackageName = "com.datingpaas.common.strategy.impl";
 
     /**
-     * converter目录路径
+     * 验单目录路径
      */
     @Value("${strategy.root.directory}")
     private String strategyDirectoryPath;
