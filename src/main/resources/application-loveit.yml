@@ -6,7 +6,7 @@ base: "/Users/hejiadong/src/java/maosong"
 project:
   root:
     # 项目根目录
-    directory: "${base}/loveit"
+    directory: "${base}/lovit"
     #备份目录
     backupDirectory: "${project.root.directory}/backup"
     # 中间层，service
@@ -48,6 +48,8 @@ entity:
     directory: "${project.root.service}/src/main/java/com/mason/dao/entity"
     package_name: "com.mason.dao.entity"
 
+
+
 #bff工程名
 bff:
   root: "${project.root.directory}/app_server"
@@ -77,3 +79,7 @@ strategy:
   root:
     directory: ""
     package_name: ""
+
+#第三方依赖包,多个用逗号分隔
+libs:
+  jars: "/Users/hejiadong/src/java/maosong/lovit/common/target/common.jar,/Users/hejiadong/src/java/maosong/lovit/data-service/target/data-service.jar"

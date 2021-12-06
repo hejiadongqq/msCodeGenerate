@@ -1,10 +1,15 @@
 package com.datingpass.utils.config;
 
+import com.datingpass.utils.utils.ClassUtils;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.util.Collection;
 
 /**
  * @author: Albert
@@ -13,6 +18,7 @@ import javax.annotation.PostConstruct;
  */
 @Component
 @Data
+@Slf4j
 public class Config {
 
     /**
@@ -44,10 +50,24 @@ public class Config {
     @Value("${project.root.directory}")
     private String projectDirectoryPath;
 
+    /**
+     * 第三方依赖包
+     */
+    @Value("${libs.jars}")
+    private String[] jars;
+
     @PostConstruct
     public void init() {
         resourceDirectoryPath = Thread.currentThread().getContextClassLoader()
                 .getResource("").getPath() + "/";
         templateDirectoryPath = resourceDirectoryPath + templateDirectoryName + "/";
+        for (String jar : jars) {
+            log.info("开始装载第三方jar包:-->{}", jar);
+            File file = new File(jar);
+            if (!file.exists() || !file.isFile()) {
+                throw new RuntimeException("加载第三方jar包失败，不存在或非文件!");
+            }
+            ClassUtils.loadJar(jar);
+        }
     }
 }

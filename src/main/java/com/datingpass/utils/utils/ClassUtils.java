@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collection;
@@ -34,7 +35,7 @@ public class ClassUtils {
 
     /**
      * 装载指定的类
-     * @param filePath              类路径
+     * @param filePath              类路径或者jar包路径
      * @param packageName           类包名
      * @param className             类名
      * @return
@@ -43,11 +44,37 @@ public class ClassUtils {
         String classPath = packageName + "." + className;
         try {
             File file = new File(filePath);
-            URL url = file.toURI().toURL();
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{url});
-            return classLoader.loadClass(classPath);
+            if (!file.exists() || !file.isFile()) {
+                throw new RuntimeException("file not exists!");
+            }
+            loadJar(filePath);
+            return Class.forName(classPath);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public static void loadJar(String jarPath) {
+        File jarFile = new File(jarPath);
+        // 从URLClassLoader类中获取类所在文件夹的方法，jar也可以认为是一个文件夹
+        Method method = null;
+        try {
+            method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+        } catch (NoSuchMethodException | SecurityException e1) {
+            e1.printStackTrace();
+        }
+        // 获取方法的访问权限以便写回
+        boolean accessible = method.isAccessible();
+        try {
+            method.setAccessible(true);
+            // 获取系统类加载器
+            URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+            URL url = jarFile.toURI().toURL();
+            method.invoke(classLoader, url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            method.setAccessible(accessible);
         }
     }
 

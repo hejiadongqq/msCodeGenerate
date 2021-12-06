@@ -235,13 +235,16 @@ public abstract class BaseServices {
         String err = "";
         Class entity = ClassUtils.getClass(entityConfig.getEntityPackage(), request.getEntityName());
         if (Objects.isNull(entity)) {
-            log.info("类不存在！开始动态加载...");
-            String classPath = entityConfig.getEntityDirectoryPath() + "/" + request.getEntityName()+".java";
-            Class aClass = ClassUtils.loadClass(classPath, entityConfig.getEntityPackage(), request.getEntityName());
-            if (Objects.isNull(aClass)) {
-                throw new RuntimeException(request.getEntityName() + " 类不存在！");
-            }
-            return aClass;
+            throw new RuntimeException(request.getEntityName() + " 类不存在！");
+//            log.info("类不存在！开始动态加载...");
+//            String classPath = entityConfig.getEntityDirectoryPath() + "/" + request.getEntityName()+".java";
+//            return null;
+//            String jarPath = entityConfig.getEntityJarPath();
+//            Class aClass = ClassUtils.getClass(entityConfig.getEntityPackage(), request.getEntityName());
+//            if (Objects.isNull(aClass)) {
+//                throw new RuntimeException(request.getEntityName() + " 类不存在！");
+//            }
+//            return aClass;
         }
         return entity;
     }

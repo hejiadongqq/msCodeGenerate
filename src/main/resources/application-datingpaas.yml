@@ -46,6 +46,7 @@ service:
 entity:
   root:
     package_name: "com.datingpaas.model.entity"
+    jar_path: "/Users/hejiadong/data/apache-maven-3.5.3/resp/com/datingpaas/datingpaas-service/1.0.0/datingpaas-service-1.0.0.jar"
 
 #bff工程名
 bff:
