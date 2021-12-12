@@ -1,10 +1,5 @@
 package ${packageName};
 
-import com.datingpaas.model.converter.mapstruct.*;
-import com.datingpaas.dao.*;
-import com.datingpaas.model.dto.*;
-import com.datingpaas.model.entity.*;
-import com.datingpaas.model.vo.*;
 import java.util.*;
 
 import org.springframework.stereotype.Service;
@@ -12,10 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 import com.service.commons.model.proxy.PageProxy;
 import com.service.commons.model.vo.PageVO;
-import com.service.commons.service.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -29,10 +23,10 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ${className} extends BaseService<${entityName}, ${dtoName}> {
-    @Autowired
+    @Resource
     private ${entityName}Converter converter;
 
-    @Autowired
+    @Resource
     private ${entityName}DAO dao;
 
     @Transactional(rollbackFor = Exception.class)

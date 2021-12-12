@@ -1,19 +1,9 @@
 package ${packageName};
 
-import com.datingpaas.common.code.EmailCodeResponse;
-import com.datingpaas.common.code.UserCodeResponse;
-import com.datingpaas.model.dto.*;
-import com.datingpaas.model.vo.*;
-import com.datingpaas.service.*;
-import com.datingpaas.converter.*;
-import com.datingpaas.model.entity.${entityName};
-import com.datingpaas.model.converter.mapstruct.${entityName}Converter;
-import com.service.commons.api.BaseController;
 import com.service.commons.model.resp.Response;
 import com.service.commons.model.vo.PageVO;
 import io.swagger.annotations.*;
 import com.service.commons.config.auth.UserAuthContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +11,7 @@ import java.util.*;
 import javax.validation.constraints.*;
 import com.service.commons.model.proxy.PageProxy;
 
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 
@@ -38,12 +29,13 @@ import javax.validation.constraints.*;
 @RequestMapping("${controllerUrl}")
 @Slf4j
 public class ${entityName}Controller extends BaseController {
-    @Autowired
+    @Resource
     private ${entityName}Service service;
 
-    @Autowired
+    @Resource
     private ${entityName}Converter converter;
 
+    @Resource
     private ${before}${entityName}Converter bffConverter;
 
     @ApiOperation(value = "分页获取")

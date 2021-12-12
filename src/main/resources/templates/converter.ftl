@@ -3,9 +3,6 @@ package ${packageName};
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.datingpaas.model.dto.*;
-import com.datingpaas.model.entity.*;
-import com.datingpaas.model.vo.*;
 import com.service.commons.model.proxy.PageProxy;
 import com.service.commons.model.vo.PageVO;
 import java.util.*;

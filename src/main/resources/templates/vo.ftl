@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.service.commons.model.vo.BaseVO;
 
 /**
  * ${entityName}VO类

@@ -1,10 +1,6 @@
 package ${packageName};
 
-import com.datingpaas.model.dto.UserUpdateDTO;
-import com.datingpaas.model.entity.Goods;
-import com.datingpaas.model.enums.GoodsType;
-import com.datingpaas.model.enums.VIP;
-import com.datingpaas.model.vo.VerifyOrderVO;
+
 import com.service.commons.tools.utils.GsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

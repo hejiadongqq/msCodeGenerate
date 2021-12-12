@@ -1,10 +1,7 @@
 package ${packageName};
 
-import com.datingpaas.model.dto.*;
-import com.datingpaas.model.entity.*;
 import java.util.*;
 
-import com.service.commons.dao.BaseDAO;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;

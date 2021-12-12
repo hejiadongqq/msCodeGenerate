@@ -3,11 +3,6 @@ package ${packageName};
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.datingpaas.model.dto.*;
-import com.datingpaas.model.vo.*;
-import com.datingpaas.model.entity.*;
-import com.datingpaas.dto.*;
-import com.datingpaas.vo.*;
 import com.service.commons.model.proxy.PageProxy;
 import com.service.commons.model.vo.PageVO;
 import java.util.*;
@@ -24,7 +19,7 @@ public interface ${className} {
     // bff to dto
     ${entityName}PersistDTO bff2dto(${before}${entityName}PersistDTO bff);
 
-    Collection<${entityName}PersistDTO> bff2dto(Collection<${before}${entityName}PersistDTO> bff);
+    Collection<${entityName}PersistDTO> bff2dtoList(Collection<${before}${entityName}PersistDTO> bff);
 
     ${entityName}UpdateDTO bff2dto(${before}${entityName}UpdateDTO bff);
 
@@ -32,7 +27,7 @@ public interface ${className} {
 
     ${entityName}VO bff2dto(${before}${entityName}VO bff);
 
-    Collection<${entityName}VO> bff2dto(Collection<${before}${entityName}VO> bff);
+    Collection<${entityName}VO> bff2dtoList(Collection<${before}${entityName}VO> bff);
 
     PageVO<${entityName}VO> bff2dto(PageProxy<${before}${entityName}VO> bff);
 
@@ -51,7 +46,7 @@ public interface ${className} {
 
     ${before}${entityName}VO dto2bff(${entityName}VO dto);
 
-    Collection<${before}${entityName}VO> dto2bff(Collection<${entityName}VO> dto);
+    Collection<${before}${entityName}VO> dto2bffList(Collection<${entityName}VO> dto);
 
     PageVO<${before}${entityName}VO> dto2bff(PageProxy<${entityName}VO> dto);
 
