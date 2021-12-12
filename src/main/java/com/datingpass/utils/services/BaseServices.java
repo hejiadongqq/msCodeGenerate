@@ -7,7 +7,6 @@ import com.datingpass.utils.utils.Utils;
 import com.datingpass.utils.vo.Field;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.oracle.tools.packager.Log;
 import com.service.commons.model.enums.Deleted;
 import freemarker.template.TemplateException;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -248,7 +246,6 @@ public abstract class BaseServices {
         }
         return entity;
     }
-
 
 
     void makeStrategy(ProjectBffServices.MakeBffRequest request, BffConfig moduleConfig) throws Exception {
