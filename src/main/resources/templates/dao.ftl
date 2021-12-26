@@ -21,10 +21,6 @@ public class ${className} extends BaseDAO<${entityName}, ${dtoName}> {
     public Specification<${entityName}> buildSpecification(${dtoName} spec) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicateList = Lists.newArrayList();
-
-            if (Objects.nonNull(spec.getGroupId())) {
-                predicateList.add(criteriaBuilder.equal(root.get("groupId"), spec.getGroupId()));
-            }
             if (Objects.nonNull(spec.getDeleted())) {
                 predicateList.add(criteriaBuilder.equal(root.get("deleted"), spec.getDeleted()));
             }
