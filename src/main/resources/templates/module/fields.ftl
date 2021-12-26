@@ -10,8 +10,9 @@
     </#if>
     <#if field.isDateTime>
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    </#if>
-    <#if field.isDate>
+    <#elseif field.isDate>
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     </#if>
     private ${field.type} ${field.name};
+
 </#list>

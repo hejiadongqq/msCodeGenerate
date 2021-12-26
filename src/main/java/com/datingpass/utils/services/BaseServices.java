@@ -162,14 +162,14 @@ public abstract class BaseServices {
                         .type("String")
                         .name("appId")
                         .build());
-                fields.add(Field.builder()
-                        .isEnum(false)
-                        .isDate(false)
-                        .isDateTime(false)
-                        .desc("groupId")
-                        .type("String")
-                        .name("groupId")
-                        .build());
+//                fields.add(Field.builder()
+//                        .isEnum(false)
+//                        .isDate(false)
+//                        .isDateTime(false)
+//                        .desc("groupId")
+//                        .type("String")
+//                        .name("groupId")
+//                        .build());
                 fields.add(Field.builder()
                         .isEnum(true)
                         .isDate(false)
