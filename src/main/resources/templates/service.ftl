@@ -31,11 +31,7 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
 
     @Transactional(rollbackFor = Exception.class)
     public ${entityName}VO save(${entityName}PersistDTO dto) {
-        ${entityName} entity = get(converter.dto2dto(dto));
-        if (Objects.nonNull(entity)) {
-            return getById(entity.getId());
-        }
-        entity = save(converter.dto2Entity(dto));
+        ${entityName} entity = save(converter.dto2Entity(dto));
         return getById(entity.getId());
     }
 

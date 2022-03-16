@@ -27,7 +27,7 @@ public interface ${className} {
 
     ${entityName}VO bff2dto(${before}${entityName}VO bff);
 
-    Collection<${entityName}VO> bff2dtoList(Collection<${before}${entityName}VO> bff);
+    Collection<${entityName}VO> bff2VoList(Collection<${before}${entityName}VO> bff);
 
     PageVO<${entityName}VO> bff2dto(PageProxy<${before}${entityName}VO> bff);
 

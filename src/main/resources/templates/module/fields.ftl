@@ -1,7 +1,6 @@
 <#list fields as field>
     <#if field.name = "groupId" || field.name = "appId" || field.name = "deleted">
         @ApiModelProperty(value = "${field.desc}", hidden = true)
-        @JsonIgnore
     <#else>
         @ApiModelProperty(value = "${field.desc}")
     </#if>

@@ -170,14 +170,14 @@ public abstract class BaseServices {
 //                        .type("String")
 //                        .name("groupId")
 //                        .build());
-                fields.add(Field.builder()
-                        .isEnum(true)
-                        .isDate(false)
-                        .isDateTime(false)
-                        .desc("删除标记YES，NO")
-                        .type(Deleted.class.getName())
-                        .name("deleted")
-                        .build());
+//                fields.add(Field.builder()
+//                        .isEnum(true)
+//                        .isDate(false)
+//                        .isDateTime(false)
+//                        .desc("删除标记YES，NO")
+//                        .type(Deleted.class.getName())
+//                        .name("deleted")
+//                        .build());
             }
             try {
                 // 生成文件

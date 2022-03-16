@@ -20,13 +20,7 @@ public class ${className} extends BaseDAO<${entityName}, ${dtoName}> {
     @Override
     public Specification<${entityName}> buildSpecification(${dtoName} spec) {
         return (root, query, criteriaBuilder) -> {
-            List<Predicate> predicateList = Lists.newArrayList();
-            if (Objects.nonNull(spec.getDeleted())) {
-                predicateList.add(criteriaBuilder.equal(root.get("deleted"), spec.getDeleted()));
-            }
-            if (Objects.nonNull(spec.getAppId())) {
-                predicateList.add(criteriaBuilder.equal(root.get("appId"), spec.getAppId()));
-            }
+            Set<Predicate> predicateList = buildSpecification(spec, root, criteriaBuilder);
 
             Predicate[] pre = new Predicate[predicateList.size()];
             pre = predicateList.toArray(pre);
