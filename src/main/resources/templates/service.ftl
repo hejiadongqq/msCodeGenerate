@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 import java.util.stream.Collectors;
 
 /**
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
  * @date ${dateTime}
  */
 @Service
+@Slf4j
 public class ${className} extends BaseService<${entityName}, ${dtoName}> {
     @Resource
     private ${entityName}Converter converter;
@@ -30,9 +32,9 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
     private ${entityName}DAO dao;
 
     @Transactional(rollbackFor = Exception.class)
-    public ${entityName}VO save(${entityName}PersistDTO dto) {
+    public Long save(${entityName}PersistDTO dto) {
         ${entityName} entity = save(converter.dto2Entity(dto));
-        return getById(entity.getId());
+        return entity.getId();
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -44,16 +46,14 @@ public class ${className} extends BaseService<${entityName}, ${dtoName}> {
     public ${entityName}VO getById(Long id) {
         ${entityName} entity = get(id);
         if (Objects.nonNull(entity)) {
-            ${entityName}VO vo = converter.entity2VO(entity);
-            return vo;
+            return converter.entity2VO(entity);
         }
         return null;
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public ${entityName}VO update(${entityName}UpdateDTO updateDTO) {
+    public void update(${entityName}UpdateDTO updateDTO) {
         update(converter.dto2Entity(updateDTO));
-        return getById(updateDTO.getId());
     }
 
     @Transactional(rollbackFor = Exception.class)

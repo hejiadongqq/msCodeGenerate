@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
  */
 @Api(tags = "${entityName} API")
 @RestController
-@RequestMapping("${controllerUrl}")
+@RequestMapping("/v1/${controllerUrl}")
 @Slf4j
 public class ${entityName}Controller extends BaseController {
     @Resource
@@ -64,15 +64,15 @@ public class ${entityName}Controller extends BaseController {
     @ApiOperation(value = "新增")
     @PostMapping
     public Response<${entityName}VO> save(@RequestBody @Valid ${before}${entityName}PersistDTO request) {
-        ${entityName}VO save = service.save(bffConverter.bff2dto(request));
-        return Response.success(save);
+        final Long id = service.save(bffConverter.bff2dto(request));
+        return Response.success(service.getById(id);
     }
 
     @ApiOperation(value = "修改")
     @PutMapping
-    public Response<${entityName}VO> update(@RequestBody @Valid ${entityName}UpdateDTO request) {
-        ${entityName}VO save = service.update(request);
-        return Response.success(save);
+    public Response update(@RequestBody @Valid ${entityName}UpdateDTO request) {
+        service.update(request);
+        return Response.success();
     }
 
 //---------------- 自动生成结束 -------------
