@@ -40,32 +40,32 @@ public class ${entityName}Controller extends BaseController {
 
     @ApiOperation(value = "分页获取")
     @PostMapping("/search")
-    public Response<PageVO<${entityName}VO>> page${entityName}(@RequestBody @Valid ${before}${entityName}SearchDTO request) {
+    public Response<PageVO<Bff${entityName}VO>> page${entityName}(@RequestBody @Valid ${before}${entityName}SearchDTO request) {
         Long userId = UserAuthContext.getId();
         Page<${entityName}> search = service.search(bffConverter.bff2dto(request));
-        return Response.success(converter.page2PageVO(new PageProxy(search)));
+        return Response.success(bffConverter.dto2bff(converter.page2PageVO(new PageProxy(search))));
     }
 
     @ApiOperation(value = "不分页获取")
     @PostMapping("/get-all")
-    public Response<Collection<${entityName}VO>> list${entityName}(
+    public Response<Collection<Bff${entityName}VO>> list${entityName}(
         @RequestBody @Valid ${before}${entityName}SearchDTO request) {
         List<${entityName}> search = service.list(bffConverter.bff2dto(request));
-        return Response.success(converter.entity2VO(search));
+        return Response.success(bffConverter.dto2bff(converter.entity2VO(search)));
     }
 
     @ApiOperation(value = "获取 详情")
     @GetMapping("/{id}")
-    public Response<${entityName}VO> get(@NotBlank(message = "id not null!")@PathVariable("id") String id) {
+    public Response<Bff${entityName}VO> get(@NotBlank(message = "id not null!")@PathVariable("id") String id) {
         ${entityName}VO vo = service.getById(Long.valueOf(id));
-        return Response.success(vo);
+        return Response.success(bffConverter.dto2bff(vo));
     }
 
     @ApiOperation(value = "新增")
     @PostMapping
-    public Response<${entityName}VO> save(@RequestBody @Valid ${before}${entityName}PersistDTO request) {
+    public Response<Bff${entityName}VO> save(@RequestBody @Valid ${before}${entityName}PersistDTO request) {
         final Long id = service.save(bffConverter.bff2dto(request));
-        return Response.success(service.getById(id);
+        return Response.success(bffConverter.dto2bff(service.getById(id));
     }
 
     @ApiOperation(value = "修改")
